@@ -20,27 +20,21 @@ function playRound(playerSelection, computerSelection)
     {
         return "Tie";
     }
-    else if (playerSelection === "paper" && computerSelection === "rock")
+    else if 
+    (
+        (playerSelection === "paper" && computerSelection === "rock") ||
+        (playerSelection === "rock" && computerSelection === "scissors") ||
+        (playerSelection === "scissors" && computerSelection === "paper")
+    )
     {
         return "Won";
     }
-    else if (playerSelection === "paper" && computerSelection === "scissors")
-    {
-        return "Lost";
-    }
-    else if (playerSelection === "rock" && computerSelection === "scissors")
-    {
-        return "Won";
-    }
-    else if (playerSelection === "rock" && computerSelection === "paper")
-    {
-        return "Lost";
-    }
-    else if (playerSelection === "scissors" && computerSelection === "paper")
-    {
-        return "Won";
-    }
-    else if (playerSelection === "scissors" && computerSelection === "rock")
+    else if 
+    (
+        (playerSelection === "paper" && computerSelection === "scissors") ||
+        (playerSelection === "rock" && computerSelection === "paper") ||
+        (playerSelection === "scissors" && computerSelection === "rock")
+    )
     {
         return "Lost";
     }
@@ -61,25 +55,29 @@ function game ()
         const result = playRound(playerSelection, computerSelection);
         if (result === "Tie")
         {
-            console.log(result + " , the score is " + playerCounter + "to " + computerCounter);
+            console.log(result + ", the score is " + playerCounter + " to " + computerCounter);
         }
         else if (result === "Won")
         {
             playerCounter++;
-            console.log(result + " , the score is " + playerCounter + "to " + computerCounter);
+            console.log(result + ", the score is " + playerCounter + " to " + computerCounter);
         }
         else 
         {
             computerCounter++;
-            console.log(result + " , the score is " + playerCounter + "to " + computerCounter);
+            console.log(result + ", the score is " + playerCounter + " to " + computerCounter);
         }
     }
-    if(playerCounter > computerCounter)
+    if (playerCounter > computerCounter)
     {
         return "Congratulations, you have beaten the Computer!";
     }
-    else
+    else if (playerCounter < computerCounter)
     {
         return "You lost, better luck next time!";
+    }
+    else
+    {
+        return "You matched the computer! Impressive!";
     }
 }
